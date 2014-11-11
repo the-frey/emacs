@@ -1,0 +1,13 @@
+*~*
+*#*
+*-history
+.smex-items
+places
+.DS_Store
+elpa
+cider-history
+auto-save-list
+ido.last
+recentf
+backups
+
