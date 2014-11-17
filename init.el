@@ -58,6 +58,9 @@
 ;; git modeline
 (add-to-list 'load-path "~/.emacs.d/vendor/git-modeline.el")
 
+;; git gutter
+(require 'git-gutter-fringe)
+
 ;; some extra stuff for the cider repl
 ;; which will make it doubleplusawesome
 
