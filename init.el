@@ -10,6 +10,16 @@
 (when (not package-archive-contents)
   (Package-refresh-contents))
 
+;; split window into 3 to get cracking
+(defun split-3-windows-horizontally-evenly ()
+  (interactive)
+  (command-execute 'split-window-horizontally)
+  (command-execute 'split-window-horizontally)
+  (command-execute 'balance-windows)
+)
+
+(global-set-key (kbd "C-x 4") 'split-3-windows-horizontally-evenly)
+
 ;; vim style powerline and custom theming
 (add-to-list 'load-path "~/.emacs.d/vendor/powerline")
 (require 'powerline)
@@ -19,8 +29,13 @@
    '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
    '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
-;; syntax highlighting for cider repl
-(setq cider-repl-use-clojure-font-lock t)
+;; we want to make sure cider can find lein
+(add-to-list 'exec-path "/usr/local/bin") 
+
+;; make the mouse less insane
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 ;; ace jump mode
 (add-to-list 'load-path "~/.emacs.d/vendor/ace-jump-mode.el")
@@ -42,6 +57,27 @@
 
 ;; git modeline
 (add-to-list 'load-path "~/.emacs.d/vendor/git-modeline.el")
+
+;; some extra stuff for the cider repl
+;; which will make it doubleplusawesome
+
+;; enable eldoc in clojure buffers
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;; show port name 
+(setq nrepl-buffer-name-show-port t)
+;; clojure syntax highlighting
+(setq cider-repl-use-clojure-font-lock t)
+;; set result prefix
+(setq cider-repl-result-prefix ";; => ")
+(setq cider-interactive-eval-result-prefix ";; => ")
+;; disable auto selection of the error buffer
+(setq cider-auto-select-error-buffer nil)
+;; wrap errors
+(setq cider-stacktrace-fill-column t)
+;; enable paredit
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+;; bind F9 to the cider test runner
+(global-set-key [f9] 'cider-test-run-tests)
 
 ;; set up neotree
 (require 'neotree)
