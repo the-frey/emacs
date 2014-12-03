@@ -58,6 +58,15 @@
 ;; git modeline
 (add-to-list 'load-path "~/.emacs.d/vendor/git-modeline.el")
 
+;; pretty clojure lambdas and such
+
+;;(add-hook (lambda ()
+;;              (do  '(("\\(#\\)(" . "λ")
+;;                            ("\\(->\\)[[:space:]]" . "→")
+;;                            ("\\(->>\\)[[:space:]]" . "⇉")
+;;                            ("\\(<=\\)[[:space:]]" . "≤")
+;;                            ("\\(>=\\)[[:space:]]" . "≥")))))
+
 ;; git gutter
 (require 'git-gutter-fringe)
 
