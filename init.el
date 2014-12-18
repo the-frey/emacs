@@ -60,12 +60,12 @@
 
 ;; pretty clojure lambdas and such
 
-;;(add-hook (lambda ()
-;;              (do  '(("\\(#\\)(" . "λ")
-;;                            ("\\(->\\)[[:space:]]" . "→")
-;;                            ("\\(->>\\)[[:space:]]" . "⇉")
-;;                            ("\\(<=\\)[[:space:]]" . "≤")
-;;                            ("\\(>=\\)[[:space:]]" . "≥")))))
+(eval-after-load 'clojure-mode
+ '(font-lock-add-keywords
+   'clojure-mode `(("\\(#\\)("
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "λ")
+                              nil))))))
 
 ;; git gutter
 (require 'git-gutter-fringe)
