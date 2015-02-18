@@ -51,6 +51,19 @@
 (fset 'insertHash "#")
 (global-set-key (kbd "M-3") 'insertHash)
 
+;; we want to be able to insert cursors at beginning and end of lines
+(global-set-key (kbd "C-<") 'mc/edit-beginnings-of-lines)
+(global-set-key (kbd "C->") 'mc/edit-ends-of-lines)
+
+;; we want to be able to mark next like this
+(global-set-key (kbd "C-S-n") 'mc/mark-next-like-this)
+
+;; we want to be able to mark all like this
+(global-set-key (kbd "C-*") 'mc/mark-all-like-this)
+
+;; control shift click to place multiple cursors
+(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
 ;; relative line numbers ftw
 (add-to-list 'load-path "~/.emacs.d/linum-relative")
 (require 'linum-relative)
