@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -19,6 +19,29 @@
 )
 
 (global-set-key (kbd "C-x 4") 'split-3-windows-horizontally-evenly)
+
+;; ruby flymake
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+;; robe for ruby
+(require 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+  (rvm-activate-corresponding-ruby))
+
+;; company mode, with robe
+(global-company-mode t)
+(push 'company-robe company-backends)
+
+;; Display ido results vertically, rather than horizontally
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+  (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
+    (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+    (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
+(add-hook 'ido-setup-hook 'ido-define-keys)
 
 ;; vim style powerline and custom theming
 (add-to-list 'load-path "~/.emacs.d/vendor/powerline")
@@ -72,7 +95,6 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/git-modeline.el")
 
 ;; pretty clojure lambdas and such
-
 (eval-after-load 'clojure-mode
  '(font-lock-add-keywords
    'clojure-mode `(("\\(#\\)("
