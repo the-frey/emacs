@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa-stable" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -34,14 +34,17 @@
 (global-company-mode t)
 (push 'company-robe company-backends)
 
+;; no scrollbars, thanks
+(scroll-bar-mode -1)
+
 ;; Display ido results vertically, rather than horizontally
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
-  (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-    (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-    (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
-(add-hook 'ido-setup-hook 'ido-define-keys)
+; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+; (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+;   (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
+;     (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+;     (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
+; (add-hook 'ido-setup-hook 'ido-define-keys)
 
 ;; vim style powerline and custom theming
 (add-to-list 'load-path "~/.emacs.d/vendor/powerline")
@@ -152,6 +155,8 @@
  '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+
+;;(load-theme 'flatland t)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
