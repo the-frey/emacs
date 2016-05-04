@@ -1,14 +1,12 @@
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
-  (Package-refresh-contents))
+  (package-refresh-contents))
 
 ;; split window into 3 to get cracking
 (defun split-3-windows-horizontally-evenly ()
