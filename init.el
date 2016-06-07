@@ -18,6 +18,15 @@
 
 (global-set-key (kbd "C-x 4") 'split-3-windows-horizontally-evenly)
 
+;; paredit
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+
+;; make sure eldoc is on
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+(global-eldoc-mode 1)
+
 ;; ruby flymake
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
@@ -50,8 +59,13 @@
 (powerline-default-theme)
 (setq powerline-default-separator 'utf-8)
 (custom-set-faces
-   '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
-   '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#2e3735" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
+ '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
 ;; we want to make sure cider can find lein
 (add-to-list 'exec-path "/usr/local/bin") 
@@ -110,7 +124,7 @@
 ;; which will make it doubleplusawesome
 
 ;; enable eldoc in clojure buffers
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'eldoc-mode)
 ;; show port name 
 (setq nrepl-buffer-name-show-port t)
 ;; clojure syntax highlighting
@@ -150,14 +164,10 @@
     ("9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "b2492bc021874b54513443587d9c173107fa5a6ca0480d45631e4db72f9eea26" default)))
  '(fci-rule-color "#2a2a2a")
  '(global-linum-mode t)
+ '(initial-buffer-choice t)
  '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
 ;;(load-theme 'flatland t)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#2e3735" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline")))))
+

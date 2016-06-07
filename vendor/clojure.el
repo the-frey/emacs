@@ -2,7 +2,7 @@
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 
 ;; cider
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'eldoc-mode)
 (setq cider-repl-pop-to-buffer-on-connect t)
 (setq cider-popup-stacktraces t)
 (setq cider-repl-popup-stacktraces t)
