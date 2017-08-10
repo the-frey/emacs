@@ -16,7 +16,7 @@
   (command-execute 'balance-windows)
 )
 
-(desktop-save-mode)
+;;(desktop-save-mode)
 (global-set-key (kbd "C-x 4") 'split-3-windows-horizontally-evenly)
 
 ;; paredit
