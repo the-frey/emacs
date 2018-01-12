@@ -3,10 +3,19 @@
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
+
+(defvar my-packages '(starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree)
+  "A list of packages to ensure are installed at launch.")
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 ;; split window into 3 to get cracking
 (defun split-3-windows-horizontally-evenly ()
@@ -167,6 +176,9 @@
  '(global-linum-mode t)
  '(initial-buffer-choice t)
  '(menu-bar-mode nil)
+ '(package-selected-packages
+   (quote
+    (rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

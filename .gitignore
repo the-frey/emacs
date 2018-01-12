@@ -10,4 +10,5 @@ auto-save-list
 ido.last
 recentf
 backups
+*.data
 
