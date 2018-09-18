@@ -25,7 +25,7 @@
   (command-execute 'balance-windows)
 )
 
-;; add joker
+;; add joker and flycheck
 (add-to-list 'load-path "~/.emacs.d/vendor/flycheck-joker")
 (require 'flycheck-joker)
 (autoload
@@ -34,6 +34,11 @@
     "Flycheck mode - includes joker for clj"
     t)
 (add-hook 'clojure-mode-hook 'flycheck-mode)
+
+;; flycheck styling
+(set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
+(set-face-attribute 'flycheck-warning nil :underline '(:color "#e3795c"))
+(set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
 
 ;; cljs
 (setq cider-cljs-lein-repl
