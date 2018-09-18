@@ -29,6 +29,12 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/flycheck-joker")
 (require 'flycheck-joker)
 
+;; cljs
+(setq cider-cljs-lein-repl
+	"(do (require 'figwheel-sidecar.repl-api)
+         (figwheel-sidecar.repl-api/start-figwheel!)
+         (figwheel-sidecar.repl-api/cljs-repl))")
+
 ;;(desktop-save-mode)
 (global-set-key (kbd "C-x 4") 'split-3-windows-horizontally-evenly)
 
