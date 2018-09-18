@@ -10,7 +10,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree)
+(defvar my-packages '(starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -24,6 +24,10 @@
   (command-execute 'split-window-horizontally)
   (command-execute 'balance-windows)
 )
+
+;; add joker
+(add-to-list 'load-path "~/.emacs.d/vendor/flycheck-joker")
+(require 'flycheck-joker)
 
 ;;(desktop-save-mode)
 (global-set-key (kbd "C-x 4") 'split-3-windows-horizontally-evenly)
@@ -178,7 +182,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

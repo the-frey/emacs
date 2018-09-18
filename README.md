@@ -4,6 +4,10 @@ My emacs configuration. Includes some extras like powerline to make it a tad mor
 
 ## To use
 
+Install joker:
+
+	brew install candid82/brew/joker 
+
 Git clone this repo into `~/.emacs.d/`. Changes on top of the CSK (see below) primarily live in `init.el`.
 
 You may also want to package install some things like `neo tree`, `git gutter` and `undo tree`; for a full list of packages installed, look in `package.el`.
