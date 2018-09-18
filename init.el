@@ -28,6 +28,12 @@
 ;; add joker
 (add-to-list 'load-path "~/.emacs.d/vendor/flycheck-joker")
 (require 'flycheck-joker)
+(autoload
+    'flycheck-mode
+    "flycheck-mode"
+    "Flycheck mode - includes joker for clj"
+    t)
+(add-hook 'clojure-mode-hook 'flycheck-mode)
 
 ;; cljs
 (setq cider-cljs-lein-repl
