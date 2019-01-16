@@ -10,7 +10,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -34,11 +34,6 @@
     "Flycheck mode - includes joker for clj"
     t)
 (add-hook 'clojure-mode-hook 'flycheck-mode)
-
-;; flycheck styling
-(set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
-(set-face-attribute 'flycheck-warning nil :underline '(:color "#e3795c"))
-(set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
 
 ;; cljs
 (setq cider-cljs-lein-repl
@@ -94,7 +89,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#2e3735" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
+ '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
  '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
  '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
@@ -125,7 +120,7 @@
 (global-set-key (kbd "C->") 'mc/edit-ends-of-lines)
 
 ;; we want to be able to mark next like this
-(global-set-key (kbd "C-S-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-d") 'mc/mark-next-like-this)
 
 ;; we want to be able to mark all like this
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
@@ -171,6 +166,8 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 ;; bind F9 to the cider test runner
 (global-set-key [f9] 'cider-test-run-tests)
+;; rainbow parens
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; set up neotree
 (require 'neotree)
@@ -188,20 +185,27 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    [zenburn-bg zenburn-red zenburn-green zenburn-yellow zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg])
- '(blink-cursor-mode nil)
- '(custom-enabled-themes (quote (Deviant)))
  '(custom-safe-themes
    (quote
-    ("9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "b2492bc021874b54513443587d9c173107fa5a6ca0480d45631e4db72f9eea26" default)))
+    ("efefb69e7781fcfe62f3d0b573701f56e45e29afbe9e378a422025fd767ea246" "addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "b2492bc021874b54513443587d9c173107fa5a6ca0480d45631e4db72f9eea26" default)))
  '(fci-rule-color "#2a2a2a")
  '(global-linum-mode t)
  '(initial-buffer-choice t)
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
 ;;(load-theme 'flatland t)
+;;(load-theme 'material t)
+;;(load-theme 'misterioso t)
+(load-theme 'tron t)
+
+;; flycheck styling
+(set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
+(set-face-attribute 'flycheck-warning nil :underline '(:color "#e3795c"))
+(set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
+
 
