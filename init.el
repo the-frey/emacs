@@ -85,13 +85,13 @@
 (powerline-default-theme)
 (setq powerline-default-separator 'utf-8)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
- '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
- '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
+   '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
+   '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
 ;; we want to make sure cider can find lein
 (add-to-list 'exec-path "/usr/local/bin") 
@@ -199,7 +199,7 @@
  '(tool-bar-mode nil))
 
 ;;(load-theme 'flatland t)
-;;(load-theme 'material t)
+(load-theme 'material t)
 ;;(load-theme 'misterioso t)
 (load-theme 'tron t)
 
