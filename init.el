@@ -1,3 +1,7 @@
+(defvar ido-cur-item nil)
+(defvar ido-default-item nil)
+(defvar ido-cur-list nil)
+
 (require 'package)
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
@@ -10,7 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -85,13 +89,13 @@
 (powerline-default-theme)
 (setq powerline-default-separator 'utf-8)
 (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
-   '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
-   '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-light :height 130 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
+ '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
 ;; we want to make sure cider can find lein
 (add-to-list 'exec-path "/usr/local/bin") 
@@ -143,6 +147,11 @@
                                               (match-end 1) "λ")
                               nil))))))
 
+;; sensible margins
+(defun my-set-margins ()
+  "Set margins in current buffer."
+  (setq left-margin-width 24))
+
 ;; git gutter
 (require 'git-gutter-fringe)
 
@@ -168,6 +177,8 @@
 (global-set-key [f9] 'cider-test-run-tests)
 ;; rainbow parens
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;; margins
+;; (add-hook 'prog-mode-hook 'my-set-margins)
 
 ;; set up neotree
 (require 'neotree)
@@ -197,6 +208,9 @@
     (tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+
+;; widen fringe
+(fringe-mode '(20 . 0))
 
 ;;(load-theme 'flatland t)
 (load-theme 'material t)
