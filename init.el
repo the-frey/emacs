@@ -93,7 +93,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-light :height 130 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
  '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
  '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
