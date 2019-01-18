@@ -38,7 +38,7 @@
  `tron
  `(default ((t (:background "#000000" :foreground "#6A8397" ))))
  `(cursor ((t (:background "#D7F0Ff"))))
- `(region ((t (:background "#3E5668"))))
+ `(region ((t (:background "#009fff"))))
  `(bold ((t (:weight normal :foreground "DarkGoldenrod2"))))
  `(fringe ((t (:background "#000000"))))
  `(mode-line ((t (:foreground "#CBECFF" :background "#3D5666"))))
