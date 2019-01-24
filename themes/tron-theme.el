@@ -65,7 +65,7 @@
  `(font-lock-preprocessor-face ((t (:foreground "#5EC4FF"))))
  `(font-lock-type-face ((t (:foreground"#DEB45B"))))
 
- `(font-lock-constant-face ((t (:foreground "#B62D66"))))
+ `(font-lock-constant-face ((t (:foreground "#9BBDD6"))))
  `(minibuffer-prompt ((t (:foreground "#729fcf" ))))
  `(font-lock-warning-face ((t (:foreground "red" :bold t))))
  `(dashboard-banner-logo-title-face ((t (
