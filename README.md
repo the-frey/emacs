@@ -12,6 +12,10 @@ Git clone this repo into `~/.emacs.d/`. Changes on top of the CSK (see below) pr
 
 You may also want to package install some things like `neo tree`, `git gutter` and `undo tree`; for a full list of packages installed, look in `package.el`.
 
+You'll also need to install the silver searcher for js definition jumping to work.
+
+    brew install ag
+
 ## Notes
 
 The initial setup for this configuration is based on the Emacs for Clojure Starter Kit, itself based on [The Emacs Starter Kit, v2](https://github.com/technomancy/emacs-starter-kit/tree/v2). Added functionality:
