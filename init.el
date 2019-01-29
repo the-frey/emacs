@@ -14,7 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -44,6 +44,15 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+;;(require 'company-tern)
+;;(add-to-list 'company-backends 'company-tern)
+;;(add-hook 'js2-mode-hook (lambda ()
+;;                           (tern-mode)
+;;                           (company-mode)))
+                           
+;; Disable completion keybindings, as we use xref-js2 instead
+;;(define-key tern-mode-keymap (kbd "M-.") nil)
+;;(define-key tern-mode-keymap (kbd "M-,") nil)
 
 ;; cljs
 (setq cider-cljs-lein-repl
@@ -208,10 +217,11 @@
  '(fci-rule-color "#2a2a2a")
  '(global-linum-mode t)
  '(initial-buffer-choice t)
+ '(js-indent-level 2)
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

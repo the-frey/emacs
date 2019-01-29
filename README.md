@@ -16,6 +16,10 @@ You'll also need to install the silver searcher for js definition jumping to wor
 
     brew install ag
 
+You might also want Tern:
+
+    sudo npm install -g tern
+
 ## Notes
 
 The initial setup for this configuration is based on the Emacs for Clojure Starter Kit, itself based on [The Emacs Starter Kit, v2](https://github.com/technomancy/emacs-starter-kit/tree/v2). Added functionality:
