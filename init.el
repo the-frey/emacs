@@ -39,6 +39,9 @@
     t)
 (add-hook 'clojure-mode-hook 'flycheck-mode)
 
+;; js
+(setq js2-strict-missing-semi-warning nil)
+
 ;; cljs
 (setq cider-cljs-lein-repl
 	"(do (require 'figwheel-sidecar.repl-api)
@@ -205,7 +208,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
