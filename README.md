@@ -1,6 +1,12 @@
-# Emacs Configuration
+# ~/.emacs.d
 
-My emacs configuration. Includes some extras like powerline to make it a tad more vim-like, as well as some theme fiddling and custom settings. You will need a powerline patched font installed on the system (preferably Meslo S DZ) in order for this to work.
+> This is my dotemacs. There are many like it, but this one is mine.
+> My dotemacs is my best friend. It is my life. I must master it as I must master my life.
+> Without me, my dotemacs is useless. Without my dotemacs, I am useless. I must hit my keybindings true. I must deliver faster than my competitor who is trying to beat me. I must beat them before they beat me.
+
+## Emacs Configuration
+
+My emacs configuration. Includes some extras like powerline to make it a tad more vim-like, as well as some theme fiddling and custom settings. You will need a powerline patched font installed on the system (preferably Meslo S DZ, although Ubuntu Mono will work as well) in order for this to work.
 
 ## To use
 
@@ -20,25 +26,12 @@ You might also want Tern:
 
     sudo npm install -g tern
 
+You might need fonts:
+
+    M-x all-the-icons-install-fonts
+
+Depending on your emacs version, you'll probably need to `M-x package-refresh-contents` and restart in order to have decent defaults.
+
 ## Notes
 
-The initial setup for this configuration is based on the Emacs for Clojure Starter Kit, itself based on [The Emacs Starter Kit, v2](https://github.com/technomancy/emacs-starter-kit/tree/v2). Added functionality:
-
-* Sets $PATH so that it's the same as your shell $PATH
-* Includes the tomorrow-night and zenburn themes
-* Turns off flyspell
-* Adds some nrepl hooks, including auto-complete
-* Prevents hippie-expand from expanding to file names
-* Turns off ido-mode's use-file-name-at-point
-* Stores backup files in `~/.saves`
-* Installs the following packages by default:
-    * starter-kit-lisp
-    * starter-kit-bindings
-    * starter-kit-ruby
-    * clojure-mode
-    * clojure-test-mode
-    * nrepl
-    * auto-complete
-    * ac-nrepl
-
-You can see all these tweaks in init.el and user.el
+The initial setup for this configuration is based on the Emacs for Clojure Starter Kit, itself based on [The Emacs Starter Kit, v2](https://github.com/technomancy/emacs-starter-kit/tree/v2).

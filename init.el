@@ -14,7 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -43,16 +43,20 @@
 (setq js2-strict-missing-semi-warning nil)
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
-;;(require 'company-tern)
-;;(add-to-list 'company-backends 'company-tern)
-;;(add-hook 'js2-mode-hook (lambda ()
-;;                           (tern-mode)
-;;                           (company-mode)))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(require 'company-tern)
+(add-to-list 'company-backends 'company-tern)
+(add-hook 'js2-mode-hook (lambda ()
+                           (tern-mode)
+                           (company-mode)))
+(setq js2-mode-hook
+  '(lambda () (progn
+    (set-variable 'indent-tabs-mode nil))))
+
                            
 ;; Disable completion keybindings, as we use xref-js2 instead
-;;(define-key tern-mode-keymap (kbd "M-.") nil)
-;;(define-key tern-mode-keymap (kbd "M-,") nil)
+(define-key tern-mode-keymap (kbd "M-.") nil)
+(define-key tern-mode-keymap (kbd "M-,") nil)
 
 ;; cljs
 (setq cider-cljs-lein-repl
@@ -88,6 +92,9 @@
 
 ;; no scrollbars, thanks
 (scroll-bar-mode -1)
+
+;; no tabs, thanks
+(setq-default indent-tabs-mode nil)
 
 ;; Display ido results vertically, rather than horizontally
 ; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
@@ -195,9 +202,11 @@
 ;; margins
 ;; (add-hook 'prog-mode-hook 'my-set-margins)
 
-;; set up neotree
+;; set up neotree and icons
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+(require 'all-the-icons)
+(setq neo-theme 'icons)
 
 ;; load user file from starter kit
 (load "~/.emacs.d/user.el")
@@ -217,11 +226,11 @@
  '(fci-rule-color "#2a2a2a")
  '(global-linum-mode t)
  '(initial-buffer-choice t)
- '(js-indent-level 2)
+;; '(js-indent-level 4)
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
