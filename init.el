@@ -14,7 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -29,6 +29,9 @@
   (command-execute 'balance-windows)
 )
 
+;; undo-tree
+(global-undo-tree-mode)
+
 ;; add joker and flycheck
 (add-to-list 'load-path "~/.emacs.d/vendor/flycheck-joker")
 (require 'flycheck-joker)
@@ -39,7 +42,7 @@
     t)
 (add-hook 'clojure-mode-hook 'flycheck-mode)
 
-;; js
+;; js and jsx
 (setq js2-strict-missing-semi-warning nil)
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -48,15 +51,25 @@
 (add-to-list 'company-backends 'company-tern)
 (add-hook 'js2-mode-hook (lambda ()
                            (tern-mode)
-                           (company-mode)))
+                           (company-mode)
+                           (electric-indent-local-mode -1)))
 (setq js2-mode-hook
   '(lambda () (progn
     (set-variable 'indent-tabs-mode nil))))
-
                            
 ;; Disable completion keybindings, as we use xref-js2 instead
 (define-key tern-mode-keymap (kbd "M-.") nil)
 (define-key tern-mode-keymap (kbd "M-,") nil)
+
+;; disable auto fill as js2 calls it directly
+(defun my-fill-nobreak-predicate ()
+  (not (nth 4 (syntax-ppss))))
+
+(defun my-prog-auto-fill ()
+  (setq-local fill-nobreak-predicate #'my-fill-nobreak-predicate)
+  (auto-fill-mode 1))
+
+(add-hook 'prog-mode-hook #'my-prog-auto-fill)
 
 ;; cljs
 (setq cider-cljs-lein-repl
@@ -226,11 +239,10 @@
  '(fci-rule-color "#2a2a2a")
  '(global-linum-mode t)
  '(initial-buffer-choice t)
-;; '(js-indent-level 4)
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
