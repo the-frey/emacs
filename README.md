@@ -1,7 +1,9 @@
 # ~/.emacs.d
 
 > This is my dotemacs. There are many like it, but this one is mine.
+
 > My dotemacs is my best friend. It is my life. I must master it as I must master my life.
+
 > Without me, my dotemacs is useless. Without my dotemacs, I am useless. I must hit my keybindings true. I must deliver faster than my competitor who is trying to beat me. I must beat them before they beat me.
 
 ## Emacs Configuration
