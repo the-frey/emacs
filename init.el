@@ -30,6 +30,7 @@
 )
 
 ;; undo-tree
+(require 'undo-tree)
 (global-undo-tree-mode)
 
 ;; add joker and flycheck
