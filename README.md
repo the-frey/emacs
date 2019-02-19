@@ -10,6 +10,12 @@
 
 My emacs configuration. Includes some extras like powerline to make it a tad more vim-like, as well as some theme fiddling and custom settings. You will need a powerline patched font installed on the system (preferably Meslo S DZ, although Ubuntu Mono will work as well) in order for this to work.
 
+## Cyberpunk
+
+Currently, I'm working on, and using the `cyberpunk_overhaul` branch. It's a complete overhaul of the Tron Legacy emacs theme based on the garish Cyberpunk themes for iTerm and VS Code. Eventuallt, I'll probably break it out into a proper theme of its own.
+
+![cyberpunk](https://raw.githubusercontent.com/the-frey/emacs/master/assets/cyberpunk-emacs.png)
+
 ## To use
 
 Install joker:
