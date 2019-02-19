@@ -34,6 +34,10 @@ You might need fonts:
 
 Depending on your emacs version, you'll probably need to `M-x package-refresh-contents` and restart in order to have decent defaults.
 
+## Terminal theme
+
+There's also a Terminal theme in this folder, loosely based on the Cyberounk theme. It's compatible with iTerm2, if that's your bag.
+
 ## Notes
 
 The initial setup for this configuration is based on the Emacs for Clojure Starter Kit, itself based on [The Emacs Starter Kit, v2](https://github.com/technomancy/emacs-starter-kit/tree/v2).

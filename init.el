@@ -129,7 +129,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#111619" :foreground "#b6beb4" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
+ '(default ((t (:inherit nil :stipple nil :background "#372963" :foreground "#00E3FF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
  '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
  '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
 
@@ -243,7 +243,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
@@ -256,8 +256,8 @@
 (load-theme 'tron t)
 
 ;; flycheck styling
-(set-face-attribute 'flycheck-error nil :underline '(:color "#d32e00"))
-(set-face-attribute 'flycheck-warning nil :underline '(:color "#e3795c"))
-(set-face-attribute 'flycheck-info nil :underline '(:color "ForestGreen"))
+(set-face-attribute 'flycheck-error nil :underline '(:color "#FF4081"))
+(set-face-attribute 'flycheck-warning nil :underline '(:color "#FF9C00"))
+(set-face-attribute 'flycheck-info nil :underline '(:color "#9C00FF"))
 
 

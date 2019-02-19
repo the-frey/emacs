@@ -36,11 +36,11 @@
 
 (custom-theme-set-faces
  `tron
- `(default ((t (:background "#000000" :foreground "#6A8397" ))))
- `(cursor ((t (:background "#D7F0Ff"))))
+ `(default ((t (:background "#372963" :foreground "#00E3FF" ))))
+ `(cursor ((t (:background "#BEFF00"))))
  `(region ((t (:background "#009fff"))))
  `(bold ((t (:weight normal :foreground "DarkGoldenrod2"))))
- `(fringe ((t (:background "#000000"))))
+ `(fringe ((t (:background "#4B3E72"))))
  `(mode-line ((t (:foreground "#CBECFF" :background "#3D5666"))))
  `(mode-line-inactive ((t (:foreground "#444444" :background "#1e1e1e"))))
  `(highlight ((t (:background "#262F36"))))
@@ -49,23 +49,23 @@
  `(ido-subdir ((t (:foreground "#5DC4FF"))))
  `(isearch ((t (:background "#4D4FBB" :foreground "#fffafa"))))
  `(lazy-highlight ((t (:background "#659f93" :foreground "#fffafa"))))
- `(linum ((t (:background "#000000" :foreground "#36424C"))))
- `(nlinum-relative-current-face ((t (:inherit linum :background "#000000" :foreground "#c6c6c6" :weight normal))))
- `(font-lock-builtin-face ((t (:foreground "#5FC4FF"))))
- `(font-lock-doc-face ((t (:foreground "#828D9C" :italic t))))
+ `(linum ((t (:background "#4B3E72" :foreground "#CBEBFF"))))
+ `(nlinum-relative-current-face ((t (:inherit linum :background "#4B3E72" :foreground "#BEFF00" :weight normal))))
+ `(font-lock-builtin-face ((t (:foreground "#00FFC1"))))
+ `(font-lock-doc-face ((t (:foreground "#7FDEFF" :italic t))))
  `(font-lock-comment-face ((t (
                                :foreground "#CBEBFF"
                                :background nil
                                :italic t))))
- `(font-lock-string-face ((t (:foreground "#387AAA"))))
- `(font-lock-variable-name-face ((t (:foreground "#9BBDD6"))))
- `(font-lock-function-name-face ((t (:foreground "#4BB5BE"))))
- `(font-lock-keyword-face ((t (:foreground "#5EC4FF"))))
+ `(font-lock-string-face ((t (:foreground "#7FDEFF"))))
+ `(font-lock-variable-name-face ((t (:foreground "#FF4081"))))
+ `(font-lock-function-name-face ((t (:foreground "#00FF9C"))))
+ `(font-lock-keyword-face ((t (:foreground "#00BEFF"))))
  `(font-lock-negation-char-face ((t (:foreground "#5EC4FF"))))
  `(font-lock-preprocessor-face ((t (:foreground "#5EC4FF"))))
- `(font-lock-type-face ((t (:foreground"#DEB45B"))))
+ `(font-lock-type-face ((t (:foreground "#FF9C00"))))
 
- `(font-lock-constant-face ((t (:foreground "#9BBDD6"))))
+ `(font-lock-constant-face ((t (:foreground "#9C00FF"))))
  `(minibuffer-prompt ((t (:foreground "#729fcf" ))))
  `(font-lock-warning-face ((t (:foreground "red" :bold t))))
  `(dashboard-banner-logo-title-face ((t (
@@ -97,15 +97,15 @@
                     :height 1.1))))
  `(org-table ((t (:background "#002831" :foreground "#9bbdd6"))))
 
- `(rainbow-delimiters-depth-1-face ((t (:foreground "#80E3E2"))))
- `(rainbow-delimiters-depth-2-face ((t (:foreground "#6BB9FE"))))
- `(rainbow-delimiters-depth-3-face ((t (:foreground "#B5DEFF"))))
- `(rainbow-delimiters-depth-4-face ((t (:foreground "#80E3E2"))))
- `(rainbow-delimiters-depth-5-face ((t (:foreground "#6BB9FE"))))
- `(rainbow-delimiters-depth-6-face ((t (:foreground "#B5DEFF"))))
- `(rainbow-delimiters-depth-7-face ((t (:foreground "#80E3E2"))))
- `(rainbow-delimiters-depth-8-face ((t (:foreground "#6BB9FE"))))
- `(rainbow-delimiters-depth-9-face ((t (:foreground "#B5DEFF"))))
+ `(rainbow-delimiters-depth-1-face ((t (:foreground "#00FF9C"))))
+ `(rainbow-delimiters-depth-2-face ((t (:foreground "#FF4081"))))
+ `(rainbow-delimiters-depth-3-face ((t (:foreground "#00BEFF"))))
+ `(rainbow-delimiters-depth-4-face ((t (:foreground "#FEF96A"))))
+ `(rainbow-delimiters-depth-5-face ((t (:foreground "#C592FF"))))
+ `(rainbow-delimiters-depth-6-face ((t (:foreground "#5A3DB5"))))
+ `(rainbow-delimiters-depth-7-face ((t (:foreground "#FEF96A"))))
+ `(rainbow-delimiters-depth-8-face ((t (:foreground "#BEFF00"))))
+ `(rainbow-delimiters-depth-9-face ((t (:foreground "#FF00BE"))))
 
  )
 
