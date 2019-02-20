@@ -14,7 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -110,28 +110,19 @@
 ;; no tabs, thanks
 (setq-default indent-tabs-mode nil)
 
-;; Display ido results vertically, rather than horizontally
-; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-; (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
-;   (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-;     (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-;     (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
-; (add-hook 'ido-setup-hook 'ido-define-keys)
-
 ;; vim style powerline and custom theming
 (add-to-list 'load-path "~/.emacs.d/vendor/powerline")
 (require 'powerline)
 (powerline-default-theme)
 (setq powerline-default-separator 'utf-8)
+
+;; custom theming from M-x customize
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#372963" :foreground "#00E3FF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline"))))
- '(mode-line ((t (:foreground "#fafafa" :background "DarkOrange" :box nil))))
- '(mode-line-inactive ((t (:foreground "#fafafa" :background "#666666" :box nil)))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline")))))
 
 ;; we want to make sure cider can find lein
 (add-to-list 'exec-path "/usr/local/bin") 
@@ -148,6 +139,7 @@
     "ace-jump-mode"
     "Emacs quick move minor mode"
     t)
+
 ;; set key binding to C-c <spc>
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
@@ -243,17 +235,19 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
 ;; widen fringe
 (fringe-mode '(20 . 0))
 
-;;(load-theme 'flatland t)
-(load-theme 'material t)
-;;(load-theme 'misterioso t)
-(load-theme 'tron t)
+;; evidence of my indecision over themes
+
+;; (load-theme 'flatland t)
+;; (load-theme 'material t)
+;; (load-theme 'misterioso t)
+(load-theme 'cyberpunk-2019 t)
 
 ;; flycheck styling
 (set-face-attribute 'flycheck-error nil :underline '(:color "#FF4081"))
