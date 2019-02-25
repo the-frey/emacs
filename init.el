@@ -235,7 +235,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
