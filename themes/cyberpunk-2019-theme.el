@@ -102,6 +102,19 @@
  `(rainbow-delimiters-depth-8-face ((t (:foreground "#BEFF00"))))
  `(rainbow-delimiters-depth-9-face ((t (:foreground "#FF00BE"))))
 
+ `(helm-header ((t (:foreground "#FF00BE" :background "#372963" :underline nil :box nil))))
+ `(helm-source-header
+     ((t (:foreground "#FF4081"
+                      :background "#372963"
+                      :underline nil
+                      :weight bold
+                      :box (:line-width 1 :style released-button)))))
+ `(helm-selection-line ((t (:background "#00FF9C" ))))
+ `(helm-visible-mark ((t (:background "#4B3E72" :foreground "#00E3FF"))))
+ `(helm-candidate-number ((t (:background "#4B3E72" :foreground "#00E3FF"))))
+ `(helm-separator ((t (:background "#4B3E72" :foreground "#00E3FF"))))
+ `(helm-match ((t (:background "#9C00FF"))))
+ `(helm-selection ((t ( :background "#FF9C00" :foreground "#FFFAFA" :underline nil))))
  )
 
 (provide-theme 'cyberpunk-2019)
