@@ -140,12 +140,18 @@
     "Emacs quick move minor mode"
     t)
 
+;; set helm-do-ag so it's a case of adding M to regex search with C-s
+(global-set-key (kbd "M-C-s") 'helm-do-ag)
+
 ;; set key binding to C-c <spc>
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; we need to be able to type M-3 to get a hash
 (fset 'insertHash "#")
 (global-set-key (kbd "M-3") 'insertHash)
+
+;; multiple cursors
+(require 'multiple-cursors)
 
 ;; we want to be able to insert cursors at beginning and end of lines
 (global-set-key (kbd "C-<") 'mc/edit-beginnings-of-lines)
