@@ -14,7 +14,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(helm helm-ag projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(tidal helm helm-ag projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -140,12 +140,18 @@
     "Emacs quick move minor mode"
     t)
 
+;; set helm-do-ag so it's a case of adding M to regex search with C-s
+(global-set-key (kbd "M-C-s") 'helm-do-ag)
+
 ;; set key binding to C-c <spc>
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; we need to be able to type M-3 to get a hash
 (fset 'insertHash "#")
 (global-set-key (kbd "M-3") 'insertHash)
+
+;; multiple cursors
+(require 'multiple-cursors)
 
 ;; we want to be able to insert cursors at beginning and end of lines
 (global-set-key (kbd "C-<") 'mc/edit-beginnings-of-lines)
@@ -235,7 +241,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (tidal helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
