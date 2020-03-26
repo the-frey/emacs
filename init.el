@@ -29,6 +29,9 @@
   (command-execute 'balance-windows)
 )
 
+;; please no more
+(setq cider-repl-display-help-banner nil)
+
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -45,6 +48,7 @@
 
 ;; js and jsx
 (setq js2-strict-missing-semi-warning nil)
+(setq js-indent-level 2)
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
@@ -122,7 +126,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Meslo LG S DZ for Powerline")))))
 
 ;; we want to make sure cider can find lein
 (add-to-list 'exec-path "/usr/local/bin") 
@@ -241,7 +245,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (docker-compose-mode tidal helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

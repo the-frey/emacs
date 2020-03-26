@@ -6,10 +6,15 @@
 (setq mc/cmds-to-run-for-all
       '(
         indent-for-tab-command
+        paredit-kill
+        paredit-open-curly
         paredit-open-round
+        paredit-open-square
+        undo-tree-visualize
         ))
 
 (setq mc/cmds-to-run-once
       '(
         paredit-forward-delete
+        smex
         ))
