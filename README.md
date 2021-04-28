@@ -34,11 +34,28 @@ You might also want Tern:
 
     sudo npm install -g tern
 
+For Indium (JS REPLs) you will need:
+
+    npm install -g indium
+
 You might need fonts:
 
     M-x all-the-icons-install-fonts
 
 Depending on your emacs version, you'll probably need to `M-x package-refresh-contents` and restart in order to have decent defaults.
+
+To get all the go stuff working, you'll need:
+
+```shell
+go get -u github.com/mdempsky/gocode
+go get github.com/rogpeppe/godef
+go get -u github.com/dougm/goflymake
+go get golang.org/x/tools/cmd/goimports
+go get golang.org/x/tools/cmd/godoc
+go get -u golang.org/x/lint/golint
+```
+
+As well as a working go installation and gopath.
 
 ## Terminal theme
 

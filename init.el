@@ -8,18 +8,24 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(docker-compose-mode tidal helm helm-ag projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(go-eldoc company-go go-mode golint go-autocomplete go-rename psc-ide purescript-mode tide docker-compose-mode tidal helm helm-ag projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;; shell path into emacs
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 ;; split window into 3 to get cracking
 (defun split-3-windows-horizontally-evenly ()
@@ -28,6 +34,77 @@
   (command-execute 'split-window-horizontally)
   (command-execute 'balance-windows)
 )
+
+;; go mode, standing by
+;; configure golint
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+(add-to-list 'exec-path "~/go/bin")
+
+;; (add-hook 'before-save-hook 'gofmt-before-save)
+
+; Use goimports instead of go-fmt for formatting with intelligent package addition/removal
+(defun go-mode-setup ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (go-eldoc-setup)
+  (setq compile-command "echo Building... && go build -v && echo Testing... && go test -v && echo Linting... && golint")
+  (setq compilation-read-command nil)
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (local-set-key (kbd "C-c C-l") 'compile))
+(add-hook 'go-mode-hook 'go-mode-setup)
+
+;;Smaller compilation buffer
+(setq compilation-window-height 14)
+(defun my-compilation-hook ()
+  (when (not (get-buffer-window "*compilation*"))
+    (save-selected-window
+      (save-excursion
+        (let* ((w (split-window-vertically))
+               (h (window-height w)))
+          (select-window w)
+          (switch-to-buffer "*compilation*")
+          (shrink-window (- h compilation-window-height)))))))
+(add-hook 'compilation-mode-hook 'my-compilation-hook)
+
+;; -- end of go section
+
+;; purescript ahoy
+(require 'psc-ide)
+(add-hook 'purescript-mode-hook
+  (lambda ()
+    (psc-ide-mode)
+    (company-mode)
+    (flycheck-mode)
+    (turn-on-purescript-indentation)))
+
+;; typescript babyy
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (setq tide-format-options
+      '(:indentSize 2
+        :tabSize 2
+        :placeOpenBraceOnNewLineForFunctions nil))
+  (setq typescript-indent-level
+        (or (plist-get (tide-tsfmt-options) ':indentSize) 2))
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;; end of typescript
 
 ;; please no more
 (setq cider-repl-display-help-banner nil)
@@ -245,8 +322,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (docker-compose-mode tidal helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
-
+    (go-eldoc company-go go-mode golint go-autocomplete go-rename psc-ide purescript-mode docker-compose-mode tide tidal helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

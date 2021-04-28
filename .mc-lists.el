@@ -10,6 +10,8 @@
         paredit-open-curly
         paredit-open-round
         paredit-open-square
+        typescript-insert-and-autoconvert-to-template
+        typescript-insert-and-indent
         undo-tree-visualize
         ))
 
@@ -17,4 +19,5 @@
       '(
         paredit-forward-delete
         smex
+        yaml-electric-backspace
         ))
