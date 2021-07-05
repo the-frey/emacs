@@ -4,24 +4,31 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/") t)
+             '("tromey" . "https://tromey.com/elpa/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("elpa" . "https://elpa.gnu.org/packages/") t)
+; (add-to-list 'package-archives
+;              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(go-eldoc company-go go-mode golint go-autocomplete go-rename psc-ide purescript-mode tide docker-compose-mode tidal helm helm-ag projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
+(defvar my-packages '(use-package rustic lsp-mode go-eldoc company-go go-mode golint go-autocomplete go-rename psc-ide purescript-mode tide docker-compose-mode tidal helm helm-ag projectile rainbow-mode undo-tree company-tern all-the-icons exec-path-from-shell js2-mode rjsx-mode xref-js2 git-gutter git-gutter-fringe multiple-cursors cyberpunk-theme material-theme starter-kit starter-kit-bindings starter-kit-lisp cider robe flymake-ruby company robe powerline neotree flycheck rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+; (use-package project :ensure t)
+;; ffs resolve project fuckery
+(defun project-root (project)
+    (car (project-roots project)))
 
 ;; shell path into emacs
 (when (memq window-system '(mac ns x))
@@ -68,6 +75,57 @@
 (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
 ;; -- end of go section
+
+;; rust config
+
+(use-package rustic
+  :ensure
+  :bind (:map rustic-mode-map
+              ("M-j" . lsp-ui-imenu)
+              ("M-?" . lsp-find-references)
+              ("C-c C-c l" . flycheck-list-errors)
+              ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status))
+  :config
+  ;; uncomment for less flashiness
+  ;; (setq lsp-eldoc-hook nil)
+  ;; (setq lsp-enable-symbol-highlighting nil)
+  ;; (setq lsp-signature-auto-activate nil)
+
+  ;; comment to disable rustfmt on save
+  (setq rustic-format-on-save t)
+  (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
+
+(defun rk/rustic-mode-hook ()
+  ;; so that run C-c C-c C-r works without having to confirm
+  (setq-local buffer-save-without-query t))
+
+(use-package lsp-mode
+  :ensure
+  :commands lsp
+  :custom
+  ;; what to use when checking on-save. "check" is default, I prefer clippy
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-eldoc-render-all t)
+  (lsp-idle-delay 0.6)
+  (lsp-rust-analyzer-server-display-inlay-hints t)
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package lsp-ui
+  :ensure
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-peek-always-show t)
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-doc-enable nil))
+
+(setq lsp-enable-links nil)
+
+;; -- end of rust... for now
 
 ;; purescript ahoy
 (require 'psc-ide)
@@ -322,7 +380,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (go-eldoc company-go go-mode golint go-autocomplete go-rename psc-ide purescript-mode docker-compose-mode tide tidal helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
+    (use-package rustic lsp-mode go-eldoc company-go go-mode golint go-autocomplete go-rename psc-ide purescript-mode docker-compose-mode tide tidal helm-ag helm package-lint projectile rainbow-mode undo-tree dash-functional company-tern xref-js2 rjsx-mode js2-mode tron-theme multiple-cursors cyberpunk-theme material-theme exec-path-from-shell flycheck-joker rainbow-delimiters starter-kit-lisp starter-kit-bindings robe powerline neotree git-gutter-fringe flymake-ruby company cider)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 

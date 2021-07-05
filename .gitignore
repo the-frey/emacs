@@ -12,5 +12,6 @@ recentf
 backups
 *.data
 url
+.lsp-session-*
 
 projectile-bookmarks.eld

@@ -46,7 +46,7 @@ Depending on your emacs version, you'll probably need to `M-x package-refresh-co
 
 To get all the go stuff working, you'll need:
 
-```shell
+```sh
 go get -u github.com/mdempsky/gocode
 go get github.com/rogpeppe/godef
 go get -u github.com/dougm/goflymake
@@ -56,6 +56,16 @@ go get -u golang.org/x/lint/golint
 ```
 
 As well as a working go installation and gopath.
+
+For Rust, you'll need to install `rustup` and then:
+
+    rustup component add rust-src
+
+```sh
+git clone https://github.com/rust-analyzer/rust-analyzer.git
+cd rust-analyzer
+cargo xtask install --server
+```
 
 ## Terminal theme
 
